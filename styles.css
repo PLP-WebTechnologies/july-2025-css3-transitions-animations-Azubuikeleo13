@@ -1,0 +1,170 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  animation: slideIn 1s ease-out;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #3498db;
+  color: white;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #2980b9;
+}
+
+.face-container {
+  margin-top: 2rem;
+}
+
+.face {
+  width: 150px;
+  height: 150px;
+  background-color: #ffeaa7;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+  transition: background-color 0.5s;
+}
+
+.eyes::before,
+.eyes::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+}
+
+.eyes::before {
+  left: 40px;
+}
+.eyes::after {
+  right: 40px;
+}
+
+.mouth {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  width: 60px;
+  height: 30px;
+  transform: translateX(-50%);
+  border-bottom: 4px solid black;
+  border-radius: 0 0 50px 50px;
+  transition: all 0.5s ease;
+}
+
+.face.happy .mouth {
+  border-top: none;
+  border-bottom: 4px solid black;
+}
+
+.face.sad .mouth {
+  border-bottom: none;
+  border-top: 4px solid black;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.face.excited {
+  animation: pulse 1.5s infinite;
+}
+
+/* Loading Spinner */
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 1rem auto;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+.modal .close {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Mood History */
+.history {
+  margin-top: 2rem;
+}
+#moodHistory {
+  list-style: none;
+  padding: 0;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
